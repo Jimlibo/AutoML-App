@@ -48,7 +48,7 @@ with st.sidebar:
     choice = st.radio("Navigation", ["Upload Dataset", "Exploratory Data Analysis", "Create Model",
                                      "Download Model", "Deploy Model"
                                      ])
-    st.info("This project application helps you explore your data, build a machine learning model and deploy it online")
+    st.info("This application helps you explore your data, build a machine learning model and deploy it online")
 
 # Upload file
 if choice == "Upload Dataset":
@@ -90,6 +90,7 @@ if choice == "Download Model":
     else:
         st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
 
+# TODO: Deploy the model
 if choice == "Deploy Model":
     st.title('Deploy Model')
     st.info("Not yet implemented!")
