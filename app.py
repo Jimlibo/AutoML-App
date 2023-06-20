@@ -67,6 +67,8 @@ if choice == "Exploratory Data Analysis":
     if df is not None:
         profile_df = df.profile_report()
         st_profile_report(profile_df)
+    else:
+        st.info("No dataset has been uploaded yet! Please go to the 'Upload Dataset' tab and upload your dataset.")
 
 # Generate the best model using pycaret
 if choice == "Create Model":
@@ -84,6 +86,7 @@ if choice == "Create Model":
 
 # Download the best model that was previously created
 if choice == "Download Model":
+    st.title("Download Model")
     if os.path.exists('./' + model_name + '.pkl'):
         with open(model_name + '.pkl', 'rb') as f:
             st.download_button('Download Model', f, file_name=model_name + '.pkl')
