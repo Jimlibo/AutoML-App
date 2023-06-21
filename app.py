@@ -30,7 +30,6 @@ def main():
         choice = st.radio("Navigation", ["General", "Import Dataset", "Exploratory Data Analysis", "Create Model",
                                          "Download Model", "Deploy Model"
                                          ])
-        st.info("This application helps you explore your data, build a machine learning model and deploy it online")
 
     # Overview of the app
     if choice == "General":
