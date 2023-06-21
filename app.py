@@ -45,10 +45,15 @@ model_name = 'AutoML_model'
 with st.sidebar:
     st.image("./Images/ai.png")
     st.title("AutoML App")
-    choice = st.radio("Navigation", ["Upload Dataset", "Exploratory Data Analysis", "Create Model",
+    choice = st.radio("Navigation", ["General", "Upload Dataset", "Exploratory Data Analysis", "Create Model",
                                      "Download Model", "Deploy Model"
                                      ])
     st.info("This application helps you explore your data, build a machine learning model and deploy it online")
+
+# Overview of the app - TODO
+if choice == "General":
+
+    pass
 
 # Upload file
 if choice == "Upload Dataset":
@@ -93,7 +98,7 @@ if choice == "Download Model":
     else:
         st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
 
-# TODO: Deploy the model
+# Deploy the model - TODO
 if choice == "Deploy Model":
     st.title('Deploy Model')
     st.info("Not yet implemented!")
