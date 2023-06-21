@@ -1,7 +1,7 @@
 FROM python:3.9-slim
 
 # define starting directory
-WORKDIR /app  
+WORKDIR /AutoML-App 
 
 # download git, to clone the repository
 RUN apt-get update && apt-get install -y \
