@@ -35,26 +35,59 @@ def create_model(task, train_df, target, model_name_):
 # Further enhance overview function - TODO
 def overview():
     st.title("Welcome to AutoML App!")
-    st.write("This app has 6 tabs, including General, Import Dataset, EDA, Create Model,"
-             " Download Model, and Deploy Model.")
+    st.write("""
+    The purpose of this app is to speed up the development of machine learning models, while also remaining 
+    easy-to-comprehend for the average user. The app consists  of 6 tabs, each one of which is
+    designed to implement a specific step of the machine learning pipeline.
+    """)
 
     # Add descriptions for each tab
-    st.header("General")
-    st.write("This is the overview page you are currently viewing. It provides an overview of the entire app.")
+    st.header("General Tab")
+    st.write("""
+    This is the home page that you are currently viewing. It provides an overview of the entire app,
+    along with information about the other tabs.
+    """)
 
-    st.header("Import Dataset")
-    st.write("In this tab, you can import your dataset to be used for analysis and model building.")
+    st.header("Import Dataset Tab")
+    st.write("""
+    In this tab, you can import your dataset to be used for analysis and model building. You can choose to either 
+    upload your own, or use one of the existing datasets. As soon as you define the dataset to be used, you will 
+    also be able to see a summary of the dataset, to make sure that everything is as it should be.
+    """)
+    st.image("./Images/import_dataset_preview.png")
 
-    st.header("EDA")
-    st.write("This tab allows you to explore your dataset using various visualizations and statistical methods.")
+    st.header("Exploratory Data Analysis Tab")
+    st.write("""
+    This tab allows you to explore your dataset using various visualizations and statistical methods. Here you can 
+    gain valuable insights about your data such as missing values, variance and other statistics about every column
+    in the dataset.
+    """)
+    st.image("./Images/eda_preview.png")
 
-    st.header("Create Model")
-    st.write("In this tab, you can build and train a machine learning model on your dataset.")
+    st.header("Create Model Tab")
+    st.write("""
+    Here, you can build and train a machine learning model on your dataset. First, by utilizing the given filters,
+    you can specify the column of the dataset that will be be used as the target for predictions, also known as 
+    'label'. Then, define the ML task (classification or regression) that the model needs to solve. Classification 
+    means that the model should be able to categorize given data into distinct classes, while a Regression model
+    tries to predict a real value from a continuous range of values. Finally, you also have the option to change the
+    default name of the model ('autoML_model'). By pressing 'Run Modeling' the app will try to find the best model that
+    corresponds to the specified task. After the training phase is over, you will be presented with a table containing
+    the candidate models, as well as their related metrics.
+    """)
+    st.image("./Images/create_model_preview.png")
 
-    st.header("Download Model")
-    st.write("This tab allows you to download your trained machine learning model for future use.")
+    st.header("Download Model Tab")
+    st.write("""
+    By navigating to this tab,you are able to download a trained machine learning model for future use. Apart from 
+    the model you trained in the 'Create Model' tab, you can also opt to download one of the models that were previously
+    trained and stored.
+    """)
+    st.image("./Images/download_model_preview.png")
 
-    st.header("Deploy Model")
-    st.write("In this tab, you can deploy your trained machine learning model to a cloud service or a local environment"
-             " for inference.")
+    st.header("Deploy Model Tab")
+    st.write("""
+    In this tab, you can deploy your trained machine learning model to a cloud service or a local environment
+    for inference. This functionality is not yet implemented!
+    """)
 
