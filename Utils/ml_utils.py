@@ -7,14 +7,15 @@ Description: A file containing some functions that help with the ml pipeline pro
 import os
 import streamlit as st
 import pandas_profiling
-from pycaret import regression, classification
+from pycaret import regression, classification, clustering, anomaly, time_series
 
 
+# add implementation for clustering, anomaly detection and time series - TODO
 def create_model(task, train_df, target, model_name_):
     best_model_ = None
 
     if task == 'Classification':
-        classification.setup(train_df, target=target, verbose=False)
+        classification.setup(train_df, target=target, verbose=False, normalize=True, fix_imbalance=True)
         setup_df = classification.pull()
         st.dataframe(setup_df)
         best_model_ = classification.compare_models()
@@ -28,6 +29,15 @@ def create_model(task, train_df, target, model_name_):
         best_model_ = regression.compare_models()
         st.dataframe(regression.pull())
         regression.save_model(best_model_, os.path.join("Models", model_name_))
+
+    if task == 'Clustering':
+        pass
+
+    if task == "Anomaly Detection":
+        pass
+
+    if task == "Time Series":
+        pass
 
     return best_model_
 
