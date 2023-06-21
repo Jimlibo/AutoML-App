@@ -79,19 +79,17 @@ if choice == "Create Model":
 # Download the best model that was previously created
 if choice == "Download Model":
     st.title("Download Model")
+    # get list of existing models
+    models = os.listdir("Models")
 
-    if os.path.exists("Models/" + model_name + ".pkl"):
-        with open("Models/" + model_name + ".pkl", "rb") as f:
-            st.download_button("Download Model", f, file_name=model_name + ".pkl")
+    # check that the above list is not empty (at least one model exists)
+    if len(models) > 0:
+        download_name = st.selectbox("Model to download:", models)
+        with open("Models/" + download_name, "rb") as f:
+            st.download_button("Download Model", f, file_name=download_name)
 
     else:
         st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
-
-
-# Test the model based on a given dataset - TODO
-if choice == "Test Model":
-    st.title('Test Model')
-    st.info("Not yet implemented!")
 
 
 # Deploy the model - TODO
