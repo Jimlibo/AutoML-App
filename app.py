@@ -13,7 +13,6 @@ from Utils.ml_utils import create_model
 
 
 # Initialization
-model_name = 'AutoML_model'
 df = None
 if os.path.exists("Log_Dir/current_dataset.txt"):
     with open("Log_Dir/current_dataset.txt", 'r') as f:
@@ -26,7 +25,7 @@ with st.sidebar:
     st.image("./Images/ai.png")
     st.title("AutoML App")
     choice = st.radio("Navigation", ["General", "Import Dataset", "Exploratory Data Analysis", "Create Model",
-                                     "Download Model", "Test Model", "Deploy Model"
+                                     "Download Model", "Deploy Model"
                                      ])
     st.info("This application helps you explore your data, build a machine learning model and deploy it online")
 
@@ -34,6 +33,7 @@ with st.sidebar:
 if choice == "General":
     st.title('Welcome to AutoML App')
     st.info("Not yet implemented!")
+
 
 # Upload file
 if choice == "Import Dataset":
