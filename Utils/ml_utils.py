@@ -32,7 +32,6 @@ def create_model(task, train_df, target, model_name_):
     return best_model_
 
 
-# Further enhance overview function - TODO
 def overview():
     st.title("Welcome to AutoML App!")
     st.write("""
@@ -85,6 +84,7 @@ def overview():
     """)
     st.image("./Images/download_model_preview.png")
 
+    # add deployment tab info - TODO
     st.header("Deploy Model Tab")
     st.write("""
     In this tab, you can deploy your trained machine learning model to a cloud service or a local environment
