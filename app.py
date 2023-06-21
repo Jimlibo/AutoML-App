@@ -13,8 +13,13 @@ from Utils.ml_utils import create_model
 
 
 # Initialization
-df = None
 model_name = 'AutoML_model'
+df = None
+if os.path.exists("Log_Dir/current_dataset.txt"):
+    with open("Log_Dir/current_dataset.txt", 'r') as f:
+        cur_dataset = f.readline()
+    df = pd.read_csv(os.path.join("Datasets", cur_dataset), index_col=None)
+
 
 # Create menu sidebar with different options
 with st.sidebar:
@@ -34,20 +39,28 @@ if choice == "General":
 if choice == "Import Dataset":
     st.title("Import Dataset")
     dataset_source = st.radio("Dataset Source:", ["Upload your dataset", "Choose from existing datasets"])
+    temp_df = None
+    dataset_name = None
 
     if dataset_source == "Upload your dataset":
         file = st.file_uploader("Upload Your Dataset")
         dataset_name = st.text_input("Dataset Name", file.name if file else "")
 
         if file:
-            df = pd.read_csv(file, index_col=None)
-            df.to_csv(os.path.join("Datasets", dataset_name), index=None)
-            st.dataframe(df)
+            temp_df = pd.read_csv(file, index_col=None)
+            temp_df.to_csv(os.path.join("Datasets", dataset_name), index=None)
+            st.dataframe(temp_df)
 
     else:
-        dataset = st.selectbox("Dataset", os.listdir("Datasets"))
-        df = pd.read_csv(dataset, index_col=None)
-        st.dataframe(df)
+        dataset_name = st.selectbox("Dataset", os.listdir("Datasets"))
+        temp_df = pd.read_csv(os.path.join("Datasets", dataset_name), index_col=None)
+        st.dataframe(temp_df)
+
+    if st.button("Confirm Dataset") and temp_df is not None:
+        # write the name of the current dataset to a file, so that other tabs can get it from there
+        with open("Log_Dir/current_dataset.txt", 'w') as f:
+            f.write(dataset_name)
+        st.info("Dataset confirmed!")
 
 
 # Get a summary of the dataframe along with statistics about it
