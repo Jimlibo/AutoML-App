@@ -1,3 +1,9 @@
+"""
+Created: 21 June 2023
+Author: Dimitris Lymperopoulos
+Description: A file containing some functions that help with the ml pipeline process
+"""
+
 import os
 import streamlit as st
 import pandas_profiling
