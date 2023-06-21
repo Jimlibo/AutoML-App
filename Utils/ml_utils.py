@@ -90,4 +90,3 @@ def overview():
     In this tab, you can deploy your trained machine learning model to a cloud service or a local environment
     for inference. This functionality is not yet implemented!
     """)
-
