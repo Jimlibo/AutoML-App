@@ -77,7 +77,7 @@ def main():
 
         if df is not None:
             chosen_target = st.selectbox('Choose the Target Column', df.columns)
-            chosen_task = st.selectbox('Choose ML Task', ['Classification', 'Regression'])
+            chosen_task = st.selectbox('Choose ML Task', ['Classification', 'Regression', 'Time Series'])
             model_name = st.text_input("Choose Model Name", "autoML_model")
 
             if st.button('Run Modelling'):
