@@ -24,7 +24,7 @@ def create_model(task, train_df, target, model_name_):
         classification.save_model(best_model_, os.path.join("Models", model_name_))
 
     if task == 'Regression':
-        regression.setup(train_df, target=target, verbose=False)
+        regression.setup(train_df, target=target, verbose=False, normalize=True)
         st.dataframe(regression.pull())
         best_model_ = regression.compare_models()
         st.dataframe(regression.pull())
@@ -37,6 +37,7 @@ def create_model(task, train_df, target, model_name_):
         pass
 
     if task == "Time Series":
+
         pass
 
     return best_model_
