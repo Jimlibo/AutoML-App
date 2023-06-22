@@ -52,7 +52,7 @@ def main():
             model_name = st.text_input("Choose Model Name", "autoML_model")
 
             if st.button('Run Modelling'):
-                best_model = create_model(task=chosen_task, train_df=df, target=chosen_target, model_name_=model_name)
+                _ = create_model(task=chosen_task, train_df=df, target=chosen_target, model_name_=model_name)
         else:
             st.info("No dataset has been chosen! Please go to the 'Import Dataset' tab and choose your dataset.")
 
