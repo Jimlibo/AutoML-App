@@ -8,6 +8,7 @@ import os
 import streamlit as st
 import pandas as pd
 import pandas_profiling
+from streamlit_pandas_profiling import st_profile_report
 from pycaret import regression, classification, time_series
 
 
@@ -128,3 +129,12 @@ def import_dataset():
             f.write(dataset_name)
         st.info("Dataset confirmed!")
 
+
+def eda(df):
+    st.title("Exploratory Data Analysis")
+
+    if df is not None:
+        profile_df = df.profile_report()
+        st_profile_report(profile_df)
+    else:
+        st.info("No dataset has been chosen! Please go to the 'Import Dataset' tab and  your choose a dataset.")
