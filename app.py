@@ -8,8 +8,7 @@ import os
 import pandas as pd
 import streamlit as st
 import pandas_profiling
-from streamlit_pandas_profiling import st_profile_report
-from Utils.ml_utils import create_model, overview
+from Utils.ml_utils import create_model, overview, import_dataset, eda
 
 
 def main():
@@ -37,39 +36,11 @@ def main():
 
     # Upload file
     if choice == "Import Dataset":
-        st.title("Import Dataset")
-        dataset_source = st.radio("Dataset Source:", ["Upload your dataset", "Choose from existing datasets"])
-        temp_df = None
-
-        if dataset_source == "Upload your dataset":
-            file = st.file_uploader("Upload Your Dataset")
-            dataset_name = st.text_input("Dataset Name", file.name if file else "")
-
-            if file:
-                temp_df = pd.read_csv(file, index_col=None)
-                temp_df.to_csv(os.path.join("Datasets", dataset_name), index=None)
-                st.dataframe(temp_df)
-
-        else:
-            dataset_name = st.selectbox("Dataset", os.listdir("Datasets"))
-            temp_df = pd.read_csv(os.path.join("Datasets", dataset_name), index_col=None)
-            st.dataframe(temp_df)
-
-        if st.button("Confirm Dataset") and temp_df is not None:
-            # write the name of the current dataset to a file, so that other tabs can get it from there
-            with open("Log_Dir/current_dataset.txt", 'w') as f:
-                f.write(dataset_name)
-            st.info("Dataset confirmed!")
+        import_dataset()
 
     # Get a summary of the dataframe along with statistics about it
     if choice == "Exploratory Data Analysis":
-        st.title("Exploratory Data Analysis")
-
-        if df is not None:
-            profile_df = df.profile_report()
-            st_profile_report(profile_df)
-        else:
-            st.info("No dataset has been chosen! Please go to the 'Import Dataset' tab and  your choose a dataset.")
+        eda(df)
 
     # Generate the best model using pycaret
     if choice == "Create Model":
