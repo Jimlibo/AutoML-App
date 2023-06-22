@@ -6,11 +6,12 @@ Description: A file containing some functions that help with the ml pipeline pro
 
 import os
 import streamlit as st
+import pandas as pd
 import pandas_profiling
 from pycaret import regression, classification, time_series
 
 
-# add implementation for clustering, anomaly detection and time series - TODO
+# add implementation for clustering and anomaly detection ? - TODO
 def create_model(task, train_df, target, model_name_):
     best_model_ = None
 
@@ -100,3 +101,30 @@ def overview():
     In this tab, you can deploy your trained machine learning model to a cloud service or a local environment
     for inference. This functionality is not yet implemented!
     """)
+
+
+def import_dataset():
+    st.title("Import Dataset")
+    dataset_source = st.radio("Dataset Source:", ["Upload your dataset", "Choose from existing datasets"])
+    temp_df = None
+
+    if dataset_source == "Upload your dataset":
+        file = st.file_uploader("Upload Your Dataset")
+        dataset_name = st.text_input("Dataset Name", file.name if file else "")
+
+        if file:
+            temp_df = pd.read_csv(file, index_col=None)
+            temp_df.to_csv(os.path.join("../Datasets", dataset_name), index=None)
+            st.dataframe(temp_df)
+
+    else:
+        dataset_name = st.selectbox("Dataset", os.listdir("../Datasets"))
+        temp_df = pd.read_csv(os.path.join("../Datasets", dataset_name), index_col=None)
+        st.dataframe(temp_df)
+
+    if st.button("Confirm Dataset") and temp_df is not None:
+        # write the name of the current dataset to a file, so that other tabs can get it from there
+        with open("../Log_Dir/current_dataset.txt", 'w') as f:
+            f.write(dataset_name)
+        st.info("Dataset confirmed!")
+
