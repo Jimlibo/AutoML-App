@@ -138,3 +138,18 @@ def create_model(task, train_df, target, model_name_):
         time_series.save_model(best_model_, os.path.join("Models", model_name_))
 
     return best_model_
+
+
+def download_model():
+    st.title("Download Model")
+    # get list of existing models
+    models = os.listdir("../Models")
+
+    # check that the above list is not empty (at least one model exists)
+    if len(models) > 0:
+        download_name = st.selectbox("Model to download:", models)
+        with open("../Models/" + download_name, "rb") as f:
+            st.download_button("Download Model", f, file_name=download_name)
+
+    else:
+        st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
