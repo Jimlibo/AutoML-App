@@ -75,12 +75,14 @@ def overview():
     st.write("""
     Here, you can build and train a machine learning model on your dataset. First, by utilizing the given filters,
     you can specify the column of the dataset that will be be used as the target for predictions, also known as 
-    'label'. Then, define the ML task (classification or regression) that the model needs to solve. Classification 
-    means that the model should be able to categorize given data into distinct classes, while a Regression model
-    tries to predict a real value from a continuous range of values. Finally, you also have the option to change the
-    default name of the model ('autoML_model'). By pressing 'Run Modeling' the app will try to find the best model that
-    corresponds to the specified task. After the training phase is over, you will be presented with a table containing
-    the candidate models, as well as their related metrics.
+    'label'. Then, define the ML task (classification, regression or time series) that the model needs to solve. 
+    Classification means that the model should be able to categorize given data into distinct classes, while a 
+    Regression model tries to predict a real value from a continuous range of values.The final option, Time series, 
+    refers to the prediction of a specific value in a certain point in time and is commonly used for stock prices and
+    financial data in general. Finally, you also have the option to change the default name of the model 
+    ('autoML_model'). By pressing 'Run Modeling' the app will try to find the best model that corresponds to the 
+    specified task. After the training phase is over, you will be presented with a table containing the candidate 
+    models, as well as their related metrics.
     """)
     st.image("./Images/create_model_preview.png")
 
