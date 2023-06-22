@@ -8,7 +8,7 @@ import os
 import pandas as pd
 import streamlit as st
 import pandas_profiling
-from Utils.ml_utils import create_model, overview, import_dataset, eda
+from Utils.ml_utils import create_model, overview, import_dataset, eda, download_model
 
 
 def main():
@@ -58,18 +58,7 @@ def main():
 
     # Download the best model that was previously created
     if choice == "Download Model":
-        st.title("Download Model")
-        # get list of existing models
-        models = os.listdir("Models")
-
-        # check that the above list is not empty (at least one model exists)
-        if len(models) > 0:
-            download_name = st.selectbox("Model to download:", models)
-            with open("Models/" + download_name, "rb") as f:
-                st.download_button("Download Model", f, file_name=download_name)
-
-        else:
-            st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
+        download_model()
 
     # Deploy the model - TODO
     if choice == "Deploy Model":
