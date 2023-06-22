@@ -37,8 +37,11 @@ def create_model(task, train_df, target, model_name_):
         pass
 
     if task == "Time Series":
-
-        pass
+        time_series.setup(train_df, target=target, verbose=False)
+        st.dataframe(time_series.pull())
+        best_model_ = time_series.compare_models()
+        st.dataframe(time_series.pull())
+        time_series.save_model(best_model_, os.path.join("Models", model_name_))
 
     return best_model_
 
