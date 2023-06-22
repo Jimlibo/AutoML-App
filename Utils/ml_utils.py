@@ -97,17 +97,17 @@ def import_dataset():
 
         if file:
             temp_df = pd.read_csv(file, index_col=None)
-            temp_df.to_csv(os.path.join("../Datasets", dataset_name), index=None)
+            temp_df.to_csv(os.path.join("Datasets", dataset_name), index=None)
             st.dataframe(temp_df)
 
     else:
-        dataset_name = st.selectbox("Dataset", os.listdir("../Datasets"))
-        temp_df = pd.read_csv(os.path.join("../Datasets", dataset_name), index_col=None)
+        dataset_name = st.selectbox("Dataset", os.listdir("Datasets"))
+        temp_df = pd.read_csv(os.path.join("Datasets", dataset_name), index_col=None)
         st.dataframe(temp_df)
 
     if st.button("Confirm Dataset") and temp_df is not None:
         # write the name of the current dataset to a file, so that other tabs can get it from there
-        with open("../Log_Dir/current_dataset.txt", 'w') as f:
+        with open("Log_Dir/current_dataset.txt", 'w') as f:
             f.write(dataset_name)
         st.info("Dataset confirmed!")
 
@@ -180,12 +180,12 @@ def download_model():
 
     st.title("Download Model")
     # get list of existing models
-    models = os.listdir("../Models")
+    models = os.listdir("Models")
 
     # check that the above list is not empty (at least one model exists)
     if len(models) > 0:
         download_name = st.selectbox("Model to download:", models)
-        with open("../Models/" + download_name, "rb") as f:
+        with open("Models/" + download_name, "rb") as f:
             st.download_button("Download Model", f, file_name=download_name)
 
     else:
