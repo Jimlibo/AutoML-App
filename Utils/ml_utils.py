@@ -13,6 +13,12 @@ from pycaret import regression, classification, time_series
 
 
 def overview():
+    """
+    A function that creates the main page of the AutoML app, with info about the different tabs that exist.
+
+    :return: None
+    """
+
     st.title("Welcome to AutoML App!")
     st.write("""
     The purpose of this app is to speed up the development of machine learning models, while also remaining 
@@ -75,6 +81,12 @@ def overview():
 
 
 def import_dataset():
+    """
+    A function that implements the functionality of importing a dataset using streamlit.
+
+    :return: None
+    """
+
     st.title("Import Dataset")
     dataset_source = st.radio("Dataset Source:", ["Upload your dataset", "Choose from existing datasets"])
     temp_df = None
@@ -101,6 +113,14 @@ def import_dataset():
 
 
 def eda(df):
+    """
+    A function that takes as input a dataframe, performs exploratory data analysis on it and presents
+    the results using streamlit.
+
+    :param df: The dataframe on which the exploratory data analysis will be performed
+    :return: None
+    """
+
     st.title("Exploratory Data Analysis")
 
     if df is not None:
@@ -112,6 +132,17 @@ def eda(df):
 
 # add implementation for clustering and anomaly detection ? - TODO
 def create_model(task, train_df, target, model_name_):
+    """
+    A function that takes as input the ML taksk, a training dataframe, the target column and a model_name, and
+    uses the training dataframe to create a machine learning model that solves the given task - that is, it predicts
+    the values of the target columns given. The function also stores the model in a file with the given model_name_.
+
+    :param task: 'Classification', 'Regression' or 'Time Series' - defines the ML task that the model needs to solve
+    :param train_df: pd.Dataframe that will be used for training
+    :param target: String representing the column that containing the 'labels' of the dataset
+    :param model_name_: String representing the name by which the model will be saved
+    :return: the model after it was trained on the given training dataframe
+    """
     best_model_ = None
 
     if task == 'Classification':
@@ -141,6 +172,12 @@ def create_model(task, train_df, target, model_name_):
 
 
 def download_model():
+    """
+    A function that uses streamlit to download a pretrained machine learning model.
+
+    :return: None
+    """
+
     st.title("Download Model")
     # get list of existing models
     models = os.listdir("../Models")
