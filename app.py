@@ -29,6 +29,9 @@ def main():
         choice = st.radio("Navigation", ["General", "Import Dataset", "Exploratory Data Analysis", "Create Model",
                                          "Download Model", "Deploy Model"
                                          ])
+        if st.button("Clear Cache"):
+            # delete old datasets and models - TODO
+            pass
 
     # Overview of the app
     if choice == "General":
