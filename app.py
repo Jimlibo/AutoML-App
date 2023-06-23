@@ -45,6 +45,8 @@ def main():
             with open("Log_Dir/current_dataset.txt", 'w') as f:
                 f.write("empty")
 
+            st.info("Cache has been cleared!")
+
     # Overview of the app
     if choice == "General":
         overview()
