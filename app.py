@@ -70,6 +70,7 @@ def main():
 
             if st.button('Run Modelling'):
                 _ = create_model(task=chosen_task, train_df=df, target=chosen_target, model_name_=model_name)
+                st.info("Model has been created!")
         else:
             st.info("No dataset has been chosen! Please go to the 'Import Dataset' tab and choose your dataset.")
 
