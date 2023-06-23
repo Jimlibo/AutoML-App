@@ -20,18 +20,27 @@ def main():
     if os.path.exists("Log_Dir/current_dataset.txt"):
         with open("Log_Dir/current_dataset.txt", 'r') as f:
             cur_dataset = f.readline()
-        df = pd.read_csv(os.path.join("Datasets", cur_dataset), index_col=None)
+        df = pd.read_csv(os.path.join("Datasets", cur_dataset), index_col=None) if cur_dataset != "" else None
 
     # Create menu sidebar with different options
     with st.sidebar:
-        st.image("./Images/ai.png")
+        st.image("./Images/ai.png", width=200)
         st.title("AutoML App")
         choice = st.radio("Navigation", ["General", "Import Dataset", "Exploratory Data Analysis", "Create Model",
                                          "Download Model", "Deploy Model"
                                          ])
+        st.write("")
+
         if st.button("Clear Cache"):
-            # delete old datasets and models - TODO
-            pass
+            # delete stored models
+            for model_file in os.listdir("Models"):
+                os.remove(os.path.join("Models", model_file))
+            # delete stored datasets
+            for data_file in os.listdir("Datasets"):
+                os.remove(os.path.join("Datasets", data_file))
+            # reset text file with current dataset
+            with open("Log_Dir/current_dataset.txt", 'w') as f:
+                f.write("")
 
     # Overview of the app
     if choice == "General":
