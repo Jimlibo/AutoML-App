@@ -34,7 +34,7 @@ def main():
                                          ])
         st.write("")
 
-        if st.button("Clear Cache"):
+        if st.button("Clear Datasets and Models"):
             # delete stored models
             for model_file in os.listdir("Models"):
                 os.remove(os.path.join("Models", model_file))
