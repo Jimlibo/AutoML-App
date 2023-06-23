@@ -134,7 +134,6 @@ def eda(df):
         st.info("No dataset has been chosen! Please go to the 'Import Dataset' tab and  your choose a dataset.")
 
 
-# add implementation for clustering and anomaly detection ? - TODO
 def create_model(task, train_df, target, model_name_):
     """
     A function that takes as input the ML taksk, a training dataframe, the target column and a model_name, and
