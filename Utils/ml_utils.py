@@ -90,6 +90,7 @@ def import_dataset():
     st.title("Import Dataset")
     dataset_source = st.radio("Dataset Source:", ["Upload your dataset", "Choose from existing datasets"])
     temp_df = None
+    dataset_name = ""
 
     if dataset_source == "Upload your dataset":
         file = st.file_uploader("Upload Your Dataset")
@@ -99,11 +100,14 @@ def import_dataset():
             temp_df = pd.read_csv(file, index_col=None)
             temp_df.to_csv(os.path.join("Datasets", dataset_name), index=None)
             st.dataframe(temp_df)
-
     else:
-        dataset_name = st.selectbox("Dataset", os.listdir("Datasets"))
-        temp_df = pd.read_csv(os.path.join("Datasets", dataset_name), index_col=None)
-        st.dataframe(temp_df)
+        datasets = os.listdir("Datasets")
+        if len(datasets) > 0:
+            dataset_name = st.selectbox("Dataset", datasets)
+            temp_df = pd.read_csv(os.path.join("Datasets", dataset_name), index_col=None)
+            st.dataframe(temp_df)
+        else:
+            st.info("No dataset has been stored yet!")
 
     if st.button("Confirm Dataset") and temp_df is not None:
         # write the name of the current dataset to a file, so that other tabs can get it from there
