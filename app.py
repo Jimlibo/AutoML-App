@@ -20,7 +20,10 @@ def main():
     if os.path.exists("Log_Dir/current_dataset.txt"):
         with open("Log_Dir/current_dataset.txt", 'r') as f:
             cur_dataset = f.readline()
-        df = pd.read_csv(os.path.join("Datasets", cur_dataset), index_col=None) if cur_dataset != "" else None
+        try:
+            df = pd.read_csv(os.path.join("Datasets", cur_dataset), index_col=None)
+        except FileNotFoundError:
+            df = None
 
     # Create menu sidebar with different options
     with st.sidebar:
@@ -40,7 +43,7 @@ def main():
                 os.remove(os.path.join("Datasets", data_file))
             # reset text file with current dataset
             with open("Log_Dir/current_dataset.txt", 'w') as f:
-                f.write("")
+                f.write("empty")
 
     # Overview of the app
     if choice == "General":
