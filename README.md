@@ -16,7 +16,7 @@ This can be done with the command:
 git clone https://github.com/Jimlibo/AutoML-App.git
 ```
 
-### Setup with Docker
+### Setup with Docker <img src="https://github.com/walkxcode/dashboard-icons/blob/main/png/docker-moby.png?raw=true" width="30" height="30" />
 If you have docker installed, you can run the app with the following commands:
 ```sh
 cd AutoML-App
@@ -24,7 +24,7 @@ cd AutoML-App
 ```
 The above script will build the docker image, initialize the container and run the app.
 
-### Setup with Python
+### Setup with Python <img src="https://github.com/walkxcode/dashboard-icons/blob/main/png/python.png?raw=true" width="30" height="30" />
 If you don't have docker installed,then you can install the required python
 packages with the following command:
 ```sh
