@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9
 
 # define starting directory
 WORKDIR /AutoML-App 
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://github.com/Jimlibo/AutoML-App.git .
 
 # download necessary python packages
-RUN pip3 install -r Setup/requirements.txt
+RUN pip install -r Setup/requirements.txt
 
 # inform docker that container listens on port 8501 (default streamlit port)
 EXPOSE 8501
@@ -24,4 +24,4 @@ EXPOSE 8501
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # execute the streamlit app
-ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
