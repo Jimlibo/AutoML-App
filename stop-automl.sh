@@ -23,6 +23,6 @@ if "$REMOVE_CONTAINERS"; then
     echo -e "${GREEN}Removing docker container and images...${NC}"
 
     docker rm automl      # remove kafka container
-    docker rm automl:latest # remove automl image
+    docker image rm automl:latest # remove automl image
     docker volume prune -f   # remove unused volumes
 fi
