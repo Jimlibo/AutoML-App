@@ -39,10 +39,7 @@ def overview():
     upload your own, or use one of the existing datasets. As soon as you define the dataset to be used, you will 
     also be able to see a summary of the dataset, to make sure that everything is as it should be.
     """)
-    try:
-        st.image("./Images/import_dataset_preview.png")
-    except:
-        pass
+    st.image("/AutoML-App/Images/import_dataset_preview.png")
 
     st.header("Exploratory Data Analysis Tab")
     st.write("""
@@ -50,10 +47,7 @@ def overview():
     gain valuable insights about your data such as missing values, variance and other statistics about every column
     in the dataset.
     """)
-    try:
-        st.image("./Images/eda_preview.png")
-    except:
-        pass
+    st.image("/AutoML-App/Images/eda_preview.png")
 
     st.header("Create Model Tab")
     st.write("""
@@ -68,10 +62,8 @@ def overview():
     specified task. After the training phase is over, you will be presented with a table containing the candidate 
     models, as well as their related metrics.
     """)
-    try:
-        st.image("./Images/create_model_preview.png")
-    except:
-        pass
+    st.image("/AutoML-App/Images/create_model_preview.png")
+
 
     st.header("Download Model Tab")
     st.write("""
@@ -79,10 +71,7 @@ def overview():
     the model you trained in the 'Create Model' tab, you can also opt to download one of the models that were previously
     trained and stored.
     """)
-    try:
-        st.image("./Images/download_model_preview.png")
-    except:
-        pass
+    st.image("/AutoML-App/Images/download_model_preview.png")
 
     # add deployment tab info - TODO
     st.header("Deploy Model Tab")
