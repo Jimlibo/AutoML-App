@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # code for optional bash parameter --remove-container
 REMOVE_CONTAINERS=false
