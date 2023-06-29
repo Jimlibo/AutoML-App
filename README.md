@@ -52,11 +52,6 @@ mentioned above!
 [Datasets]: https://github.com/Jimlibo/AutoML-App/tree/main/Datasets
 [Models]: https://github.com/Jimlibo/AutoML-App/tree/main/Models
 
-## Future Extensions
-- [ ] Implement deployment of models to cloud services.
-- [ ] Add more options for data preprocessing.
-- [ ] Add more ML tasks (i.e. clustering, anomaly detection, etc.)
-
 ## License
 Distributed under the MIT License. See 
 [LICENSE](https://github.com/Jimlibo/AutoML-App/tree/main/License_Aggreement/LICENSE) for more information.
