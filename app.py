@@ -78,7 +78,7 @@ def main():
     if choice == "Download Model":
         download_model()
 
-    # Deploy the model - TODO
+    # Deploy the model
     if choice == "Deploy Model":
         st.title('Deploy Model')
         deploy_model()
