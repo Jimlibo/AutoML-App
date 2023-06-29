@@ -150,7 +150,7 @@ def eda(df):
 
 def create_model(task, train_df, target, model_name_):
     """
-    A function that takes as input the ML taksk, a training dataframe, the target column and a model_name, and
+    A function that takes as input the ML task, a training dataframe, the target column and a model_name, and
     uses the training dataframe to create a machine learning model that solves the given task - that is, it predicts
     the values of the target columns given. The function also stores the model in a file with the given model_name_.
 
