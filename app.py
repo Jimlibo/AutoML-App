@@ -8,7 +8,7 @@ import os
 import pandas as pd
 import streamlit as st
 import pandas_profiling
-from Utils.ml_utils import create_model, overview, import_dataset, eda, download_model
+from Utils.ml_utils import create_model, overview, import_dataset, eda, download_model, deploy_model
 
 
 def main():
@@ -81,7 +81,7 @@ def main():
     # Deploy the model - TODO
     if choice == "Deploy Model":
         st.title('Deploy Model')
-        st.info("Not yet implemented!")
+        deploy_model()
 
 
 if __name__ == '__main__':
