@@ -5,6 +5,7 @@ Description: A file containing some functions that help with the ml pipeline pro
 """
 
 import os
+import pickle
 import streamlit as st
 import pandas as pd
 import pandas_profiling
@@ -204,5 +205,32 @@ def download_model():
         with open("Models/" + download_name, "rb") as f:
             st.download_button("Download Model", f, file_name=download_name)
 
+    else:
+        st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
+
+
+def deploy_model():
+    """
+    A function that uses streamlit to deploy a pretrained machine learning model.
+
+    :return: None
+    """
+
+    models = os.listdir("Models")
+
+    # check that the above list is not empty (at least one model exists)
+    if len(models) > 0:
+        st.info("Currently, deployment is only supported for regression and classification models!")
+
+        ml_task = st.selectbox("ML Task:", ["Classification", "Regression"])
+        deploy_name = st.selectbox("Model to Deploy:", models)
+
+        # load the model from the pickle file
+        if deploy_name:
+            with open("Models/" + deploy_name, "rb") as f:
+                model = pickle.load(f)
+        # deploy the model - TODO
+        if st.button("Deploy Model"):
+            pass
     else:
         st.info("No model has been yet created! Please go to the 'Create Model' tab and generate a model first.")
